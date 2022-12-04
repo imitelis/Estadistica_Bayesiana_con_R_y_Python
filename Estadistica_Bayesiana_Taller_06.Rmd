@@ -1,0 +1,56 @@
+---
+title: "Taller 6"
+author: 
+- Webpage https://sites.google.com/view/juansosa/ 
+- YouTube https://www.youtube.com/c/JuanSosa1702 
+- GitHub  https://github.com/jstats1702 
+- Rpubs   https://rpubs.com/jstats1702
+date: ""
+output:
+  html_document:
+    highlight: default
+    number_sections: yes
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Una línea de producción se basa en mediciones precisas de un algoritmo de reconocimiento de imágenes en la primera etapa del proceso. Se sabe que el algoritmo es insesgado, así que es razonable asumir que las mediciones siguen una distribución normal con media cero, $y_i\mid\sigma^2\stackrel{\text{iid}}{\sim}\textsf{N}(0,\sigma^2)$, para $i=1,\ldots,n$. Algunos errores están permitidos, pero si se excede un umbral $c$, entonces el algoritmo se debe reemplazar. Se hacen $n=20$ mediciones y se observa que $\sum_{i=1}^n y_i = -2$ y $\sum_{i=1}^n y_i^2 = 15$. Asumiendo que $\sigma^2\sim\textsf{GI}(a,b)$, calcule la probabilidad posterior de que $\sigma>c$ en las siguientes instancias:
+
+- $c=1$ y $a=b=0.1$.
+- $c=1$ y $a=b=10$.
+- $c=2$ y $a=b=0.1$.
+- $c=2$ y $a=b=10$.
+
+2. Sea $y_i\mid\theta \stackrel{\text{iid}}{\sim}\textsf{N}(\theta,1)$, para $i=1,\ldots,n$. Considere una distribución previa impropia para $\theta$ de la forma $p(\theta)=1$ para todo $\theta$ (una distribución previa de esta forma se denomina impropia porque $\int_{\Theta} p (\theta)\,\textsf{d}\theta$ diverge). Halle la distribución posterior de $\theta$ y muestre que es una función de densidad propia.
+
+3. Considere el modelo $y_i\mid\sigma^2_i\stackrel{\text{iid}}{\sim}\textsf{N}(0,\sigma^2_i)$, para $i=1,\ldots,n$, con $\sigma^2_i\mid\beta\sim\textsf{G}(4,\beta)$ y $\beta\sim\textsf{G}(1,1)$.
+
+a. Representar el modelo por medio de un DAG.
+b. Hallar las distribuciones condicionales completas de $\sigma_i$ y $\beta$.
+c. Implementar un muestreador de Gibbs para obtener muestras de la distribución posterior de $(\sigma^2_1,\ldots,\sigma^2_n,\beta)$, asumiendo que $n=10$ y que $y_i=i$ para todo $i$.
+d. Chequear exhaustivamente la convergencia del algoritmo.
+e. Hacer inferencia posterior sobre los parámetros del modelo. 
+
+4. Considere el número de hijos de hombres de 30 años con (`menchild30bach.dat`) y sin (`menchild30nobach.dat`) títulos de pregrado. Sean $\theta_A$ y $\theta_B$ la tasa promedio del número de hijos de hombres de 30 años con y sin pregrado, respectivamente. Se asumen distribuciones muestrales de Poisson para los dos grupos, de forma que $\theta_A = \theta$ y $\theta_B=\gamma\theta$. En esta parametrización, $\gamma$ representa la razón de tasas $\theta_B/\theta_A$. Finalmente, se asume que $\theta$ y $\gamma$ son independientes a prior con $\theta\sim\textsf{G}(a_\theta,b_\theta)$ y $\gamma\sim\textsf{G}(a_\gamma,b_\gamma)$.
+
+a. Representar el modelo por medio de un DAG.
+b. ¿Los parámetros $\theta_A$ y $\theta_B$ son independientes?
+c. Hallar la distribución condicional completa de $\theta$.
+d. Hallar la distribución condicional completa de $\gamma$.
+e. Hallar el valor esperado previo y el coeficiente de variación previo de $\theta$ y graficar la distribución previa de $\theta$ con $a_\theta = 2$ y $b_\theta=1$.
+f. Hallar el valor esperado previo y el coeficiente de variación previo de $\gamma$  y graficar la distribución previa de $\gamma$ con $a_\gamma=b_\gamma\in\{1; 8; 16; 32; 64; 128\}$.
+g. Usando todos los valores de los hiperparámetros dados anteriormente, implementar un muestreador de Gibbs con al menos $B=1000$ iteraciones (después de un periodo de calentamiento de 1000 iteraciones), y chequear exhaustivamente la convergencia del algoritmo.
+h. Hallar e interpretar en cada caso la media posterior de $\theta_B-\theta_A$, el coeficiente de variación posterior de $\theta_B-\theta_A$, el intervalo de credibilidad al 95\% para $\theta_B-\theta_A$, la probabilidad posterior de $\theta_B>\theta_A$, y la probabilidad posterior de $\tilde{y}_B>\tilde{y}_A$, donde $\tilde{y}$ denota una observación de la distribución predictiva posterior, y probar el sistema de hipótesis $H_0:\gamma=1$ frente a $H_1:\gamma\neq 1$. Describir el efecto de la especificación previa sobre los resultados a posteriori.
+
+5. Sea $y_t=\rho y_{t-1}+\epsilon_t$, con $\epsilon_t\mid\sigma^2\stackrel{\text{iid}}{\sim}\textsf{N}(0,\sigma^2)$, para $t=1,\ldots,n$, asumiendo una distribución previa impropia de la forma $\pi(\rho,\sigma^2)\propto 1/\sigma^2$. Este es un modelo popular en el análisis de series temporales conocido como modelo autorregresivo de orden uno o AR(1).
+
+a. Hallar la verosimilitud condicional en $y_1$, i.e., $f(y_2,\ldots,y_n\mid y_1,\rho,\sigma^2)$.
+b. Hallar la distribución posterior basada en la verosimilitud condicional. 
+c. Hallar $p(\rho\mid\sigma^2,y_1,\ldots,y_n)$ y $p(\sigma^2\mid y_1,\ldots,y_n)$.
+d. Simular dos conjuntos de datos con $n=500$, uno con $(\rho,\sigma^2)=(0.95,4)$ y el otro con $(\rho,\sigma^2)=(0.3,4)$. Ajustar el modelo y realizar la inferencia posterior correspondiente en cada caso.
+
+6. Replicar el caso de estudio acerca de los puntajes de matemáticas de los estudiantes que presentaron la Prueba Saber 11 para el segundo semestre de 2020 (los datos se encuentran disponibles en `SB11_2.txt`), ajustando un modelo Normal jerárquico con medias especificas y varianza común, y también un modelo Normal jerárquico con medias y varianzas especificas.
+

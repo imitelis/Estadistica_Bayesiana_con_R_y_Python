@@ -1,0 +1,63 @@
+---
+title: "Taller 5"
+author: 
+- Webpage https://sites.google.com/view/juansosa/ 
+- YouTube https://www.youtube.com/c/JuanSosa1702 
+- GitHub  https://github.com/jstats1702 
+- Rpubs   https://rpubs.com/jstats1702
+date: ""
+output:
+  html_document:
+    highlight: default
+    number_sections: yes
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Los archivos `school1.dat`, `school2.dat`, y `shool3.dat` contienen datos sobre la cantidad de tiempo que los estudiantes de tres colegios dedicaron a estudiar o hacer tareas durante un período de exámenes.
+
+a. Explore los datos gráfica y numéricamente.
+b. Analice los datos de cada una de los colegios separadamente, utilizando un modelo Normal con una distribución previa conjugada, en la que $\mu_0 = 5$, $\sigma_0^2 = 4$, $\kappa_0 = 1$, $\nu_0 = 2$, y calcule lo siguiente:
+  
+    - Medias posteriores e intervalos de credibilidad al 95% para la media $\theta$, la desviación estándar $\sigma$, y el coeficiente de variación $\frac{\sigma}{\mu}$ de cada escuela.
+    - La probabilidad posterior de que $\theta_i < \theta_j < \theta_k$ para las seis permutaciones $\{i, j, k \}$ de $\{1, 2, 3 \}$, donde $\theta_i$ es la media del del colegio $i$.
+    - La probabilidad posterior de que $\tilde{y}_i < \tilde{y}_j < \tilde{y}_k$ para las seis permutaciones $\{i, j, k \}$ de $\{1, 2, 3 \}$, donde $\tilde{y}_i$ es una observación de la distribución predictiva posterior de la escuela $i$.
+    - Calcule la probabilidad posterior de que $\theta_1$ sea mayor que $\theta_2$ y $\theta_3$, y la probabilidad posterior de que $\tilde{y}_1$ sea mayor que $\tilde{y}_2$ y $\tilde{y}_3$.
+    
+c. Dibuje la distribución posterior conjunta de $(\theta, \sigma^2)$ para cada escuela.
+d. Compruebe la bondad de ajuste del modelo para cada escuela utilizando como estadísticos de prueba la media y el coeficiente de variación.
+
+2. Considere el modelo Normal dado por $y_i\mid\theta,\sigma^2 \stackrel{\text{iid}}{\sim} \textsf{N}(\theta,\sigma^2)$, para $i=1,\ldots,n$, con distribución previa
+$$
+\theta \mid \sigma^{2} \sim \textsf{N}\left(\mu_{0}, \frac{\sigma^{2}}{\kappa_{0}}\right)
+\qquad\text{y}\qquad
+\sigma^{2} \sim \textsf{GI}\left(\frac{\nu_{0}}{2}, \frac{\nu_{0}\,\sigma_{0}^{2}}{2}\right)\,,
+$$
+donde $\mu_0,\kappa_0,\nu_0,\sigma^2_0$ son los hiperparámetros del modelo. 
+
+a. Encuentre la distribución posterior de $(\theta,\sigma^2)$.
+b. Encuentre la distribución condicional completa de $\theta$.
+c. Encuentre la distribución marginal de $\theta$.
+d. Encuentre la distribución marginal de $\sigma^2$.
+e. Simule $n=1000$ observaciones i.i.d de $\textsf{N}(5,1)$. Ajuste el modelo suponiendo los siguientes escenarios previos: i. estados de conocimiento previo bastante informativo acerca de los valores reales de los parámetros, ii. estado de conocimiento previo informativo acerca de $\theta$ y difuso acerca de $\sigma^2$, iii. estado de conocimiento previo informativo acerca de $\sigma^2$ y difuso acerca de $\theta$, y iv. estado de conocimiento previo difuso acerca de ambos parámetros. Caracterice la distribución posterior en cada caso.
+f. Suponga que está interesado en hacer inferencia sobre $\eta=\sigma/\theta$. Desarrolle un algoritmo de Monte Carlo para calcular la media posterior y un intervalo de credibilidad al 95\% para $\eta$. Use el algoritmo para calcular estas cantidades en todos los escenarios descritos anteriormente.
+
+3. Considere el modelo Normal $x_i\mid\theta,\sigma^2 \stackrel{\text{iid}}{\sim} \textsf{N}(\theta,\sigma^2)$, para $i=1,\ldots,n$, donde $\theta$ es desconocido y $\sigma^2$ es conocido. Además, considere una distribución previa para $\theta$ definida por medio de una mezcla finita de previas conjugadas de la forma
+$$
+p(\theta) = \sum_{\ell=1}^K w_\ell\,\phi(\theta\mid\mu_\ell,\tau^2)\,
+$$
+donde $K$ es un entero positivo fijo mayor o igual que 1, $w_1,\ldots,w_K$ es un sistema de pesos tales que y $\sum_{\ell=1}^K w_\ell = 1$ y $0\leq w_\ell\leq 1$ para $\ell=1,\ldots,K$, y $\phi(\theta\mid\mu,\tau^2)$ denota la densidad de la distribución Normal con media $\mu$ y varianza $\tau^2$. Una distribución previa de esta forma permite especificar estados de información previos multimodales acerca de $\theta$.
+
+a. Encuentre la distribución posterior de $\theta$.
+b. Encuentre la media posterior de $\theta$.
+c. Encuentre la distribución predictiva previa.
+d. Encuentre la distribución predictiva posterior.
+
+4. Considere el modelo Normal Trucado $x_i\mid\theta,\sigma^2 \stackrel{\text{iid}}{\sim} \textsf{N}_{(0,\infty)}(\theta,\sigma^2)$, para $i=1,\ldots,n$, donde $\sigma^2=1$. Además, considere la distribución previa para $\theta$ dada por $\theta\sim\textsf{N}(\mu,\tau^2)$.
+
+a. Encuentre la distribución posterior de $\theta$.
+b. ¿Este modelo se puede catalogar como un modelo conjugado?
+

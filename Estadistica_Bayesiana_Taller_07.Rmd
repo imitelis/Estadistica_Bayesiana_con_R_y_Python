@@ -1,0 +1,83 @@
+---
+title: "Taller 7"
+author: 
+- Webpage https://sites.google.com/view/juansosa/ 
+- YouTube https://www.youtube.com/c/JuanSosa1702 
+- GitHub  https://github.com/jstats1702 
+- Rpubs   https://rpubs.com/jstats1702
+date: ""
+output:
+  html_document:
+    highlight: default
+    number_sections: yes
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newcommand{\simiid}{\,{\stackrel{\text{iid}}{\sim}}\,}
+\newcommand{\simind}{\,{\stackrel{\text{ind}}{\sim}}\,}
+
+\newcommand{\te}{\theta}
+
+\newcommand{\yv}{\boldsymbol{y}}
+\newcommand{\tev}{\boldsymbol{\theta}}
+\newcommand{\siv}{\boldsymbol{\sigma}}
+\newcommand{\omev}{\boldsymbol{\omega}}
+\newcommand{\xiv}{\boldsymbol{\xi}}
+
+\newcommand{\Nor}{\small{\textsf{N}}}
+\newcommand{\Cat}{\small{\textsf{Categorica}}}
+\newcommand{\Dir}{\small{\textsf{Dirichlet}}}
+\newcommand{\IG} {\small{\textsf{GI}}}
+
+Considere el conjunto de datos de galaxias que consiste en mediciones univariadas que representan las velocidades de las galaxias alejándose de nuestra galaxia, junto con el modelo: 
+
+$$
+y_i\mid\xi_i,\te_{\xi_i},\sigma^2 \simind \Nor(\,\theta_{\xi_i},\sigma^2_{\xi_i}\,)
+$$
+
+donde
+
+$$
+p(\xiv,\omev,\tev,\siv^2) = p(\xiv\mid\omev)\,p(\omev)\,p(\tev)\,p(\siv^2)
+$$ 
+donde:
+$$
+\begin{align*}
+\xiv \mid \omev &\sim    \Cat(\omev) \\
+\omev           &\sim    \Dir(\alpha^0_1,\ldots,\alpha^0_{H})\\
+\theta_h        &\simiid \Nor(\mu_0,\gamma_0^2) \\
+\sigma^2_h      &\sim    \IG\left(\tfrac{\nu_0}{2},\tfrac{\nu_0\sigma^2_0}{2}\right)
+\end{align*}
+$$
+Los parámetros del modelo son $\xi_1,\ldots,\xi_n,\omega_1,\ldots,\omega_H,\te_1,\ldots,\te_H,\sigma_1^2,\ldots,\sigma^2_H$.
+
+Los hiperparámetros del modelo son $\alpha^0_1,\ldots,\alpha^0_{H},\mu_0,\gamma_0^2,\nu_0,\sigma^2_0$.
+
+
+
+1. Realizar una representación DAG del modelo.
+
+2. Generar una muestra aleatoria de tamaño $n = 100$ de la siguiente mezcla:
+$$
+y_i \simiid 0.2\Nor(-4,0.5) + 0.5\Nor(0,1) + 0.3\Nor(4,0.75)\,.
+$$
+3. Hacer un histograma de la muestra superponiendo la función de densidad de la población. 
+
+4. Desarrollar un muestreador de Gibbs para ajustar el modelo.
+
+5. Ajustar el modelo con $H = 3$ y $\alpha^0_1=\ldots=\alpha^0_H=1/H,\mu_0 = \bar{y},\gamma_0^2 = s^2_y,\nu_0 = 1,\sigma^2_0 = s^2_y$. 
+	
+7. Examinar la convergencia del algoritmo.
+
+8. Reportar una estimación puntual y un intervalo de credibilidad al 95\% para $\theta_1,\ldots,\theta_H,\sigma_1^2,\ldots,\sigma^2_H,\omega_1,\ldots,\omega_H$. 
+¿Los intervalos contienen los valores verdaderos con los que se generaron los datos?
+
+9. Reportar una estimación puntual y un intervalo de credibilidad al 95\% para el Índice de Rand (RI, *Rand Index*) y el Índice de Rand Ajustado (ARI, *Adjusted Rand Index*), entre la partición verdadera y la partición encontrada por el modelo. ¿El modelo es capaz de recobrar la partición verdadera con la que se simularon los datos? 
+
+10. Simular $1000$ conjuntos de la mezcla propuesta con $n=100$ y ajustar el modelo para $H\in{2,3,4,5}$ y en cada caso calcular el WAIC. ¿El WAIC sirve como buena métrica para seleccionar el número de grupos correcto?
+
+11. Repetir el numeral anterior para $n=10$ y $n = 50$. ¿El WAIC es robusto respecto al tamaño de la muestra para seleccionar el número de grupos correcto?

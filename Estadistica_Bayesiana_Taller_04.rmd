@@ -1,0 +1,73 @@
+---
+title: "Taller # 4"
+author: 
+- Webpage https://sites.google.com/view/juansosa/ 
+- YouTube https://www.youtube.com/c/JuanSosa1702 
+- GitHub  https://github.com/jstats1702 
+- Rpubs   https://rpubs.com/jstats1702
+date: ""
+output:
+  html_document:
+    highlight: default
+    number_sections: yes
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Suponga que para un problema de respuesta binaria se planea usar una previa uniforme para la proporción de la población $\theta$, con el fin de no favorecer ningún valor de $\theta$ a priori. Sin embargo, algunas personas prefieren estudiar las proporciones en escala logit, es decir, están interesados en $\gamma = \log\frac{\theta}{1-\theta}$. Vía simulación de Monte Carlo, encuentre la distribución previa de $\gamma$ inducida por la distribución uniforme para $\theta$. ¿Esta distribución es Uniforme para $\gamma$?
+	
+2. Se quiere comparar dos ciudades cuyos sistemas de opinión se pueden considerar como independientes, en términos de las tasas de apoyo $\theta_1$ y $\theta_2$ que los ciudadanos otorgan a una medida económica gubernamental. Por tal motivo, se realiza un estudio de carácter observacional en el que, entre otras variables, se recopilan datos sobre la variable binaria $y_{i,j}$ que asume el valor 1 si la persona $i$ de la ciudad $j$ apoya la medida, y asume el valor 0 en caso contrario, para $i=1,\ldots,n_j$ y $j=1,2$. Teniendo en cuenta que $s_1=\sum_{i=1}^{85} y_{i,1} = 57$ y $s_2=\sum_{i=1}^{90} y_{i,2} = 36$, y asumiendo distribuciones previas no informativas para $\theta_1$ y $\theta_2$ en modelos Beta-Binomial independientes, calcule: i. la media de $\theta_1-\theta_2$, ii. un intervalo de credibilidad al 95\% para $\theta_1-\theta_2$, y iii. la probabilidad de que $\theta_1 > \theta_2$, con base en $B=10,000$ muestras independientes de la distribución posterior de $(\theta_1,\theta_2)$. ¿Hay suficiente evidencia empírica para argumentar diferencias significativas entre las tasas de opinión de las dos ciudades?
+	
+3. Considere el contexto del ejercicio 2 del Taller 3 acerca de las tasas **tumorigenesis** en dos cepas de ratones.
+
+a. Usando la distribución previa de la parte a), calcule $\textsf{Pr}(\theta_{\text{B}} < \theta_{\text{A}}\mid \boldsymbol{y}_{\text{A}},\boldsymbol{y}_{\text{B}})$ vía simulación de Monte Carlo.
+b. Para cada $m\in\{1,2,\ldots,50\}$, calcule nuevamente $\textsf{Pr}(\theta_{\text{B}} < \theta_{\text{A}}\mid \boldsymbol{y}_{\text{A}},\boldsymbol{y}_{\text{B}})$ vía simulación de Monte Carlo, con $\theta_{\text{A}}\sim\textsf{Gamma}(120,10)$ y $\theta_{\text{B}}\sim \textsf{Gamma}(12m,m)$. ¿Qué tan sensitivas son las inferencias acerca del evento $\theta_{\text{B}} < \theta_{\text{A}}$ respecto a la distribución previa de $\theta_{\text{B}}$?
+c. Repita los numerales a. y b. reemplazando el evento $\theta_{\text{B}} < \theta_{\text{A}}$ por el evento $\bar{y^*}_{\text{B}} < \bar{y^*}_{\text{A}}$, donde $\bar{y^*}_{\text{A}}$ y $\bar{y^*}_{\text{B}}$ son promedios muestrales calculados a partir de muestras i.i.d. de tamaños 10 y 13 de la distribución predictiva posterior de A y B,  respectivamente.
+d. Usando la distribución previa de la parte a., para ambas cepas de ratones, chequee la bondad de ajuste del modelo usando como estadísticos de prueba la media y la desviación estándar.
+
+4. Considere el modelo $y_i\mid\theta \stackrel{\text{iid}}{\sim} \textsf{N}(\theta,\sigma^2_0)$, para $i = 1,\ldots,n$, con varianza $\sigma^2_0$ conocida, y $\theta \sim \textsf{N}(\mu_0,\tau^2_0)$, donde $\mu_0$ y $\tau^2_0$ son hiperparámetros (conocidos). Muestre que $\theta\mid\boldsymbol{y}\sim\textsf{N}(\mu_n,\tau^2_n)$, donde
+$$
+\tau^2_n = \frac{1}{\frac{1}{\tau^2_0} + \frac{n}{\sigma^2_0}}\qquad\text{y}\qquad\mu_n = \frac{\frac{1}{\tau^2_0}\,\mu_0 + \frac{n}{\sigma^2_0}\,\bar{y}}{\frac{1}{\tau^2_0} + \frac{n}{\sigma^2_0}}\,,
+$$
+donde $\boldsymbol{y}=(y_1,\ldots,y_n)$ y $\bar{y} = \frac1n\sum_{i=1}^n y_i$. Así, la media posterior de $\theta$ es un promedio ponderado entre la media a priori $\mu_0$ y la media muestral $\bar{y}$.
+	
+5. Considere una única observación de la distribución muestral $x\mid\theta\sim\textsf{N}(\theta,\theta)$, con $\theta > 0$. Muestre que la previa de Jeffreys de para $\theta$ es tal que:
+$$
+p_J(\theta)\propto\frac{(2\theta + 1)^{1/2}}{\theta}\,.
+$$
+
+6. Una distribución de la familia exponencial (de un parámetro) es cualquier distribución cuya función de densidad se puede expresar como
+$$
+p(y\mid\phi) = h(y)\,c(\phi)\,\exp{\left( \phi\,t(y) \right)}\,,
+$$ 
+donde $\phi$ es el parámetro natural y $t(y)$ es un estadístico suficiente. Muestre que las distribuciones Binomial, Poisson, y Exponencial hacen parte de la familia exponencial. En cada caso identificar el parámetro natural y un estadístico suficiente.
+
+7. La variable aleatoria $X$ tiene distribución Galenshore con parámetros $\alpha,\beta > 0$, i.e., $X\mid\alpha,\beta\sim\textsf{Galenshore}(\alpha,\beta)$, si su función de densidad de probabilidad es
+$$
+p(x\mid\alpha,\beta) = 
+\frac{2}{\Gamma(\alpha)}\,\beta^{2\alpha}\,x^{2\alpha-1}\,e^{-\beta^2x^2}\,,\qquad x>0\,.
+$$
+Para esta distribución se tiene que 
+$$
+\textsf{E}(X\mid\alpha,\beta) = \frac{\Gamma(\alpha+\tfrac12)}{\beta\Gamma(\alpha)} \qquad\text{y}\qquad\textsf{E}(X^2\mid\alpha,\beta) = \frac{\alpha}{\beta^2}\,.
+$$ 
+Asumiendo que $\alpha$ es conocido:
+a. Identifique una clase de densidades previas conjugadas para $\beta$.
+b. Sea $y_1,\ldots,y_n\mid\beta\stackrel{\text{iid}}{\sim}\textsf{Galenshore}(\alpha,\beta)$. Encuentre la distribución posterior de $\beta$ dado $\boldsymbol{y}=(y_1,\ldots,y_n)$ usando la distribución previa de la clase conjugada del numeral anterior.
+c. Identifique un estadístico suficiente para $\beta$ a partir de la distribución condicional conjunta $p(\boldsymbol{y}\mid\beta)$.
+d. Determine $\textsf{E}(\beta\mid\boldsymbol{y})$.
+
+8. Suponga que $y_1\ldots,y_5$ son observaciones condicionalmente independientes de una distribución Cauchy con parámetro de localización $\theta$ y parámetro de escala 1, i.e.,
+$$
+p(y_i\mid\theta) = \frac{1}{\pi(1+(y_i-\theta)^2)}\,,\qquad-\infty<y_i<\infty\,,\qquad-\infty<\theta<\infty\,,
+$$
+para $i=1,\ldots,5$. Además, asuma por simplicidad que la distribución previa de $\theta$ es Uniforme en el intervalo $(0,100)$, i.e., $\theta\sim\textsf{Unif}(0,100)$. 
+
+Teniendo en cuenta el vector de observaciones $\boldsymbol{y}=(43.0, 44.0, 45.0, 46.5, 47.5)$:
+
+a. Calcule la función de densidad posterior sin normalizar, $p(\boldsymbol{y}\mid\theta)\,p(\theta)$, en una grilla de puntos equidistantes para $\theta$ de la forma $0,\frac{1}{M},\frac{2}{M},\ldots,100$, con $M=1,000$. Usando los valores calculados para cada punto de la grilla, calcule y grafique la función de densidad posterior normalizada, $p(\theta\mid\boldsymbol{y})$.
+b. Usando la aproximación discreta del numeral anterior, obtenga $B=10,000$ muestras de la distribución posterior de $\theta$ y grafique el histograma correspondiente (junto con una estimación puntual y un intervalo de credibilidad al 95\%).
+c. Utilice las muestras de la distribución posterior de $\theta$ del numeral anterior para obtener muestras de la distribución predictiva posterior de una observación futura y grafique el histograma correspondiente (junto con una estimación puntual y un intervalo de credibilidad al 95\%).
