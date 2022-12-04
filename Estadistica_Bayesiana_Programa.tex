@@ -1,0 +1,240 @@
+\documentclass[letterpaper,12pt,openany]{article}
+%%% ----------------------------------------------------------------------
+\pagestyle{headings}
+%%% ----------------------------------------------------------------------
+%%% PAQUETES -------------------------------------------------------------
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{flafter}
+\usepackage{amsthm,array}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{mathtools}
+%\usepackage{enumitem}
+%\usepackage{longtable}
+%\usepackage{natbib}
+%\usepackage{pb-diagram}
+%\usepackage{makeidx}
+%\usepackage{fancyhdr}
+%\usepackage{fancyvrb}
+%\usepackage{makeidx}
+%\usepackage{textcomp}
+%\usepackage{multicol}
+%\usepackage{multirow}
+\usepackage{url}
+%\usepackage{tikz}
+%\usepackage{nomencl}
+%\usepackage{bookmark}
+%\usepackage{caption}
+%\usepackage{tabularx}
+%%% ----------------------------------------------------------------------
+%%% TABLES ---------------------------------------------------------------
+%%% ----------------------------------------------------------------------
+\makeatletter
+\def\hlinewd#1{%
+\noalign{\ifnum0=`}\fi\hrule \@height #1 %
+\futurelet\reserved@a\@xhline}
+\makeatother
+%%% ----------------------------------------------------------------------
+%%% FORMATO DE PÁGINA ----------------------------------------------------
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\oddsidemargin   0.2  in
+\evensidemargin  0.2  in
+\voffset        -0.3  in
+\hoffset         0.0  in
+\headsep         0.25 in
+\topmargin       0.0  in
+\textwidth       6.3  in
+\textheight      9.0  in
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+%%% ----------------------------------------------------------------------
+\renewcommand{\baselinestretch}{1.1}
+%\renewcommand{\labelitemi}{$\bullet$}
+%%% ----------------------------------------------------------------------
+% SÍMBOLOS ---------------------------------------------------------------
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+\def\@roman#1{\romannumeral #1}
+\makeatother
+\spanishdecimal{.}
+%%% ----------------------------------------------------------------------
+% COLORES  ---------------------------------------------------------------
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%\definecolor{violet}{rgb}{0.56, 0.0, 1.0}
+%
+%%% ----------------------------------------------------------------------
+\allowdisplaybreaks
+%%% ----------------------------------------------------------------------
+%%% ----------------------------------------------------------------------
+% DOCUMENT ---------------------------------------------------------------
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\begin{document}
+
+%\title{Titulo}
+
+%\author{Autor}
+
+%\maketitle
+
+\begin{center}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.75]{logo}
+\end{figure}
+{\Large \textbf{Estadística Bayesiana}}
+\end{center}
+
+
+\section*{Información general}
+
+\begin{itemize}
+	\item \textbf{Código:} 2016364.
+	\item \textbf{Créditos:} 4.
+	\item \textbf{Profesor:} Juan Camilo Sosa Martínez, PhD.
+	\item \textbf{Correo:} \url{jcsosam@unal.edu.co}
+	\item \textbf{Página web:} \url{https://sites.google.com/view/juansosa/}
+\end{itemize}
+
+\section*{Descripción} 
+
+\textbf{Objetivo de formación} \\
+Estudiar los fundamentos de la estadística Bayesiana para el análisis de datos teniendo en cuenta de manera formal los aspectos teóricos y computacionales.
+
+\textbf{Objetivos pedagógicos} \\
+El estudiante que curse la asignatura y cumpla con las exigencias académicas, podrá:
+\begin{itemize}
+	\item Comprender los conceptos fundamentales de estadística Bayesiana.
+	\item Formular modelos Bayesianos para el análisis de datos. 
+	\item Implementar computacionalmente algoritmos relacionados con la inferencia Bayesiana.
+	\item Interpretar adecuadamente los resultados obtenidos con software especializado.
+	\item Conectar los resultados de la estadística Bayesiana con la estadística frecuentista.
+\end{itemize}
+
+\section*{Metodología}
+
+El curso estará compuesto por una combinación de clases magistrales teóricas y prácticas, en las que además de la explicación de los conceptos correspondientes, se proporcionan ejemplos aplicados. Adicionalmente, habrá talleres para que los estudiantes apliquen los conceptos aprendidos, y además, analicen e interpreten los resultados obtenidos.
+
+\section*{Evaluación}
+
+Los exámenes parciales están compuestos de problemas tanto teóricos como prácticos, y están basados en el contenido de las clases y los ejercicios propuestos en los talleres.
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{lcc}
+			\hline
+			Evaluación & Valor (\%) & Fecha \\
+			\hline
+			E. Parcial 1 & 25 &  \\
+			E. Parcial 2 & 25 &  \\
+			E. Parcial 3 & 25 &  \\
+			Quices       & 25 &  \\   
+			\hline
+		\end{tabular}
+\end{table}
+
+\section*{Contenido}
+
+\begin{enumerate}[I.]
+	\item \textbf{Introducción.}
+	\begin{enumerate}[1.]
+		\item Conceptos generales de inferencia estadística.
+		\item Conceptos generales de estadística Bayesiana.
+		\item Diferencias entre la estadística frecuentista y Bayesiana.
+		\item Intercambiabilidad.
+		\item Teorema de de Finetti.
+	\end{enumerate}
+
+	\item \textbf{Modelos de un parámetro.}
+	\begin{enumerate}[1.]
+		\item Modelo Bernoulli.
+		\item Modelo Poisson.
+		\item Previas conjugadas.
+		\item Inferencia posterior.
+		\item Familia exponencial y previas conjugadas.
+	\end{enumerate}
+	
+	\item \textbf{Simulación de Monte Carlo.}
+	\begin{enumerate}[1.]
+		\item Método de Monte Carlo.
+		\item Inferencia posterior sobre funciones arbitrarias.
+		\item Muestreo de distribuciones predictivas.
+		\item Chequeo del modelo.
+	\end{enumerate}
+
+	\item \textbf{Modelo Normal.}
+	\begin{enumerate}[1.]
+		\item Modelo Normal.
+		\item Inferencia conjunta para la media y la varianza.
+		\item Especificación de la previa.	
+	\end{enumerate}
+
+	\item \textbf{Aproximación de la posterior con el muestreador de Gibbs.}
+\begin{enumerate}[1.]
+	\item Previa semiconjugada. 
+	\item Muestreo de las condicionales completas.
+	\item Muestreador de Gibbs.
+	\item Diagnósticos de convergencia.
+\end{enumerate}
+
+	\item \textbf{Modelo Normal multivariado.}
+\begin{enumerate}[1.]
+	\item Modelo Normal multivariado.
+	\item Previa semiconjugada.
+	\item Muestreador de Gibbs.
+\end{enumerate}
+
+	\item \textbf{Comparación de grupos.}
+\begin{enumerate}[1.]
+	\item Intercambiabilidad y modelos jerárquicos. 
+	\item Modelo jerárquico normal.
+	\item Previa y aproximación de la posterior.
+	\item Inferencia posterior y contracción.
+\end{enumerate}
+
+	\item \textbf{Regresión Lineal.}
+\begin{enumerate}[1.]
+	\item Modelo de regresión lineal.
+	\item Mínimos cuadrados.
+	\item Previa semiconjugada.
+	\item Selección de modelos.
+\end{enumerate}
+
+	\newpage
+
+	\item \textbf{Algoritmo de Metropolis-Hastings.}
+\begin{enumerate}[1.]
+	\item Modelo lineales generalizados.
+	\item Previa no conjugada.
+	\item Algoritmo de Metropolis-Hastings.
+	\item Metropolis, Metropolis-Hastings, y Gibbs.
+\end{enumerate}
+
+	\item \textbf{Modelos lineales de efectos mixtos.}
+\begin{enumerate}[1.]
+	\item Modelo lineal de efectos mixtos.
+	\item Distribuciones condicionales completas.
+	\item Análisis posterior.
+\end{enumerate}
+
+\end{enumerate}
+ 
+ 
+\nocite{*}
+\renewcommand{\bibname}{Referencia}
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+
+\end{document} 
